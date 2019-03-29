@@ -1,0 +1,11 @@
+[
+    { "key":"1", "name":"john", "lastname":"gorter", "present":true},
+    { "key":"2", "name":"test", "lastname":"gorter", "present":true},
+    { "key":"3", "name":"bla", "lastname":"gorter", "present":true},
+    { "key":"4", "name":"rien", "lastname":"gorter", "present":false},
+    { "key":"5", "name":"yordi", "lastname":"gorter", "present":false},
+    { "key":"6", "name":"test", "lastname":"gorter", "present":false},
+    { "key":"7", "name":"john", "lastname":"gorter", "present":false},
+    { "key":"8", "name":"john", "lastname":"gorter", "present":false},
+    { "key":"9", "name":"john", "lastname":"gorter", "present":false}
+]

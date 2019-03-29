@@ -6,22 +6,30 @@ import ViewCell from './ViewCell';
 export default class MainScreen extends Component {
     constructor(props){
         super(props);
+        
+//        this.socket = new WebSocket("ws://localhost:5000/");
+
         this.state = {
-            playerlist: [
-                { key:"1", name:"john", lastname:"gorter", present:true},
-                { key:"2", name:"john", lastname:"gorter", present:true},
-                { key:"3", name:"john", lastname:"gorter", present:true},
-                { key:"4", name:"john", lastname:"gorter", present:false},
-                { key:"5", name:"john", lastname:"gorter", present:false},
-                { key:"6", name:"john", lastname:"gorter", present:false},
-                { key:"7", name:"john", lastname:"gorter", present:false},
-                { key:"8", name:"john", lastname:"gorter", present:false},
-                { key:"9", name:"john", lastname:"gorter", present:false},
-                { key:"10", name:"john", lastname:"gorter", present:false},
-                { key:"11", name:"john", lastname:"gorter", present:false}
-            ]
+            playerlist: []
         }
     }
+    componentDidMount(){
+       // let socket = new WebSocket("ws://localhost:5000/");
+
+       // this.socket.onopen = () => this.socket.send("hello");
+       // this.socket.onmessage = ({data}) => console.log(data);
+
+        console.log("mounted");
+        fetch("http://localhost:5000/players.json")
+        .then(resp => resp.json())
+        .then(playerdata => {
+            this.setState({playerlist:playerdata});
+        });
+    }
+    _onselected(item){
+       //  this.socket.send("JOHN CHANGED: " + JSON.stringify(item));
+    }
+
     render() {
         return (
            <View style={{backgroundColor:'yellow', flex:1, ...this.props.style}}>
@@ -29,7 +37,7 @@ export default class MainScreen extends Component {
                     <Text style={{marginBottom:10}}>Deelnemers</Text>
                 </View>
                 <FlatList style={{ flex: 1, marginTop:60 }} contentContainerStyle={{ flexGrow: 1 }}  data={this.state.playerlist} renderItem={({item}) => (
-                    <ViewCell data={item}></ViewCell>
+                    <ViewCell onselected={this._onselected.bind(this)} data={item}></ViewCell>
                 )}>
                 </FlatList>
             </View>

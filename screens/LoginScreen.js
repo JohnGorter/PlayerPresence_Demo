@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, Platform } from 'react-native';
 
 export default class LoginScreen extends Component {
     constructor(props) {
@@ -29,6 +29,7 @@ export default class LoginScreen extends Component {
           </View>
           <View style={{flex:4, backgroundColor:'yellow'}}>
             <View style={{alignItems:'center'}}>
+              <Text>{Platform.OS == "ios" ? " IOS RULES!!" : "ANDROID RULES!"} {Platform.Version} </Text>
               <Text>Username:</Text><TextInput style={{height: 40, width: 200, backgroundColor:'white'}} placeholder="Username:" 
                       onChangeText={(username) => this.setState({username})} />
               <Text>Password:</Text><TextInput secureTextEntry style={{height: 40, width: 200, backgroundColor:'white'}}      placeholder="Password:"  onChangeText={(password) => this.setState({password})} />
